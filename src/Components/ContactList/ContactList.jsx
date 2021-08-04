@@ -5,6 +5,7 @@ import {
   ItemContact,
   Paragraph,
   Button,
+  Contain,
 } from "./ContactList.styled";
 
 function ContactList({ contacts, onDeleteContact }) {
@@ -12,11 +13,19 @@ function ContactList({ contacts, onDeleteContact }) {
     <ListContact>
       {contacts.map(({ id, name, number }) => (
         <ItemContact key={id}>
-          <RiContactsLine color='#c21111e2'></RiContactsLine>
-          <Paragraph>
-            {name}
-          </Paragraph> <BsPhone color='#c21111e2'></BsPhone>{" "}
-          <Paragraph>{number}</Paragraph>
+          <Contain>
+            <RiContactsLine color='#c21111e2'></RiContactsLine>
+            <Paragraph>{name}</Paragraph>
+          </Contain>
+          <Contain>
+            <BsPhone
+              width='16px'
+              viewBox='0 0 16 16'
+              color='#c21111e2'
+            ></BsPhone>
+            <Paragraph>{number}</Paragraph>{" "}
+          </Contain>
+
           <Button onClick={() => onDeleteContact(id)}>
             <RiDeleteBinLine></RiDeleteBinLine>
           </Button>
