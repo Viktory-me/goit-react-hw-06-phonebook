@@ -1,0 +1,26 @@
+Form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  height: auto;
+}
+Label {
+  font-weight: bold;
+  text-align: center;
+  display: flex;
+  align-items: center;
+}
+
+Button {
+  padding: 4px 10px;
+  color: #c21111e2;
+}
+button:hover {
+  background-color: #c21111e2;
+  color: white;
+}
+input {
+  padding: 4px;
+  margin-bottom: 5px;
+}
