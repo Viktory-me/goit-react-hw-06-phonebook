@@ -1,9 +1,15 @@
 import React from "react";
-import PropTypes from "prop-types";
+import { useSelector, useDispatch } from "react-redux";
+import { getFilter } from "../../redux/contacts/contactsSelector";
+import contactsActions from "../../redux/contacts/contactsAction";
 import { RiPhoneFindLine } from "react-icons/ri";
 import { FilterContainer, Input, FilterTitle } from "./Filter.styled";
 
-export default function Filter({ value, onChange }) {
+export default function Filter() {
+  const value = useSelector(getFilter);
+  const dispatch = useDispatch();
+  const onChange = (e) => dispatch(contactsActions.setFilter(e.target.value));
+
   return (
     <FilterContainer>
       <FilterTitle>
@@ -19,8 +25,3 @@ export default function Filter({ value, onChange }) {
     </FilterContainer>
   );
 }
-
-Filter.propTypes = {
-  value: PropTypes.string.isRequired,
-  onchangeFilter: PropTypes.func,
-};
