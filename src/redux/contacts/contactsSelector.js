@@ -1,12 +1,15 @@
-export const getContacts = (state) => state.contacts.items;
-export const getFilter = (state) => state.contacts.filter;
+export const getFiltered = (state) => state.phonebook.filter;
 
-export const getVisibleContacts = (state) => {
-  const todos = getContacts(state);
-  const filter = getFilter(state);
-  const normalizedFilter = filter.toLowerCase();
+export const getContactsList = (state) => state.phonebook.contacts;
 
-  return todos.filter(({ name }) =>
-    name.toLowerCase().includes(normalizedFilter)
+export const getFiltredContacts = (state) => {
+  const filter = getFiltered(state);
+  const contacts = getContactsList(state);
+
+  const normalizeFilter = filter.toLowerCase();
+  return contacts.filter(
+    ({ name, number }) =>
+      name.toLowerCase().includes(normalizeFilter) ||
+      number.includes(normalizeFilter)
   );
 };

@@ -1,6 +1,4 @@
 import { useSelector, useDispatch } from "react-redux";
-import contactsActions from "../../redux/contacts/contactsAction";
-
 import { RiContactsLine, RiDeleteBinLine } from "react-icons/ri";
 import { BsPhone } from "react-icons/bs";
 import {
@@ -10,12 +8,13 @@ import {
   Button,
   Contain,
 } from "./ContactList.styled";
-import { getVisibleContacts } from "../../redux/contacts/contactsSelector";
+import { getFiltredContacts } from "../../redux/contacts/contactsSelector";
+import { deleteContact } from "../../redux/contacts/contactsAction";
 
 function ContactList() {
-  const contacts = useSelector(getVisibleContacts);
+  const contacts = useSelector(getFiltredContacts);
   const dispatch = useDispatch();
-  const onDeleteContact = (id) => dispatch(contactsActions.deleteContact(id));
+  const onDeleteContact = (id) => dispatch(deleteContact(id));
 
   return (
     <ListContact>
